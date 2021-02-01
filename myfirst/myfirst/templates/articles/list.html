@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Lsat articles {% endblock %}
+
+{% block content %}
+    {% if latest_articles_list %}
+<ul class="list-group">
+        {% for a in latest_articles_list %}
+          <li class="list-group-item"><a href="{% url 'articles:detail' a.id %}" class="btn btn-info">{{a.article_title}}</a>
+              <br>{{ a.pub_date }}</li>
+        {% endfor %}
+    {% else %}
+       <li>No articles here</li>
+</ul>
+    {% endif %}
+
+{% endblock %}
